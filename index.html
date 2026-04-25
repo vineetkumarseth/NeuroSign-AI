@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NeuroSign AI</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🤟 NeuroSign AI</div>
+  <div class="nav-links">
+    <button onclick="goPage('home')">Home</button>
+    <button onclick="goPage('demo')" class="cta">▶ Live Demo</button>
+  </div>
+</nav>
+
+<div id="home" class="page active">
+  <h1>Break the <span class="g">Silence Barrier</span></h1>
+  <p class="sub">Real-time Indian Sign Language → Text & Speech. No app. No hardware.</p>
+  <button class="btn" onclick="goPage('demo')">🎯 Try Live Demo</button>
+  <div class="stats">
+    <div class="stat"><b>6.3M+</b><span>Users</span></div>
+    <div class="stat"><b>95%+</b><span>Accuracy</span></div>
+    <div class="stat"><b>&lt;200ms</b><span>Latency</span></div>
+    <div class="stat"><b>₹0</b><span>Cost</span></div>
+  </div>
+</div>
+
+<div id="demo" class="page">
+  <div class="demo-grid">
+    <div>
+      <div class="cam-box">
+        <div id="webcam-container"></div>
+        <div class="live-tag">● LIVE</div>
+        <div id="fps">-- FPS</div>
+        <div id="hint">Point camera at hand ✋</div>
+      </div>
+      <div class="hist-box">
+        <p class="lbl">HISTORY</p>
+        <div id="history">Signs appear here...</div>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="letter-box" id="letter-box">
+        <p class="lbl">DETECTED SIGN</p>
+        <div id="letter">—</div>
+        <div id="meaning">Waiting...</div>
+        <div class="conf-row"><span>Confidence</span><span id="conf-pct">0%</span></div>
+        <div class="conf-bg"><div class="conf-fg" id="conf-fg"></div></div>
+      </div>
+      <div class="word-box">
+        <p class="lbl">WORD BUILDER</p>
+        <div id="word-display">_</div>
+        <div class="word-btns">
+          <button onclick="addSpace()">Space</button>
+          <button onclick="delChar()">⌫</button>
+          <button onclick="clearWord()">Clear</button>
+          <button class="speak-btn" onclick="speakWord()">🔊 Speak</button>
+        </div>
+      </div>
+      <div class="lang-row">
+        <button id="lb-en" class="lb on" onclick="setLang('en')">🇬🇧 English</button>
+        <button id="lb-hi" class="lb" onclick="setLang('hi')">🇮🇳 Hindi</button>
+      </div>
+      <div class="pred-box">
+        <p class="lbl">TOP PREDICTIONS</p>
+        <div id="pred-list"></div>
+      </div>
+      <div id="status">⏳ Loading AI model...</div>
+    </div>
+  </div>
+</div>
+
+<div id="loader"><div class="spin"></div><p>NeuroSign AI</p></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
